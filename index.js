@@ -3,7 +3,7 @@ $(document).ready(function () {
     const animaldiv = $("#animalsbuttons");
     $(".animal").click(function () {
 
-        let animal = $(this).data('data-name');
+        let animal = $(this).data('name');
 
         $.ajax({
             url: "http://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" + animal,
@@ -36,7 +36,7 @@ $(document).ready(function () {
         // on click to build the button
         // populate to add it in with other animal buttons
         console.log("I am working1")
-        // $("#gifs").empty();
+        
 
     });
 
@@ -78,7 +78,10 @@ $(document).ready(function () {
             }
 
         });
+        
     });
+    // $("#gifs").empty();
+    
 });
 
 // X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0    api-key
