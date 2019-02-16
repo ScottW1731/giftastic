@@ -15,7 +15,7 @@ $(document).ready(function () {
             var results = response.data;
             // process array
             for (var i = 0; i < results.length; i++) {
-                var still = results[i].images.fixed_height_still.url;
+                var still = results[i].images.fixed_height.url;
                 console.log(results[i]);
                 console.log("We have data");
                 var animalImage = $("<img>");
