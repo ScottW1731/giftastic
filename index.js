@@ -1,6 +1,6 @@
 // event handler
-$(document).ready(function(){
-    $(".animal").click(function(){
+$(document).ready(function () {
+    $(".animal").click(function () {
         console.log("You clicked me!");
         console.log(this);
         let animal = $(this).data('name');
@@ -11,7 +11,7 @@ $(document).ready(function(){
             method: "GET",
             // dataType: "jsonp"
             // for loop through array
-        }).then(function(response){
+        }).then(function (response) {
             var results = response.data;
             // process array
             for (var i = 0; i < results.length; i++) {
@@ -20,23 +20,26 @@ $(document).ready(function(){
                 console.log("We have data");
                 var animalImage = $("<img>");
                 animalImage.attr("src", still);
-                
+
                 // target gifs div to append
                 $("#gifs").append(animalImage);
-            
+
+                // attempt to clear previous image/s displayed
+                // it emptied on loading?
+
+
             }
             // type/images/fixedheight/url
-            
             // format data
-            
-            
+
+
             // fix append so that only one tpye of image shows
             // dynamically create button
             // functions just like other buttons
-            
         });
+        // of corse it did because it was in the wrong position
+        $("#gifs").empty();
 
-        
     });
 });
 
