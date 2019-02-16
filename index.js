@@ -27,17 +27,21 @@ $(document).ready(function () {
                 // attempt to clear previous image/s displayed
                 // it emptied on loading?
 
-
             }
             // type/images/fixedheight/url
             // format data
 
-
-            // fix append so that only one tpye of image shows
-            // dynamically create button
-            // functions just like other buttons
         });
-        // of corse it did because it was in the wrong position
+        // dynamically create button
+        // functions just like other buttons
+        // target div id animalsbuttons
+        // on click to build the button
+        // populate to add it in with other animal buttons
+        $(onclick).build(function(event){
+        
+        })
+        // of course it did because it was in the wrong position
+        // fixed append so that only one tpye of image shows
         $("#gifs").empty();
 
     });
