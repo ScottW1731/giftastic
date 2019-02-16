@@ -1,30 +1,28 @@
 // event handler
 $(document).ready(function () {
+    const animaldiv = $("#animalsbuttons");
     $(".animal").click(function () {
-        // console.log("You clicked me!");
-        // console.log(this);
-        let animal = $(this).data('name');
-        // console.log(animal);
+
+        let animal = $(this).data('data-name');
 
         $.ajax({
             url: "http://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" + animal,
             method: "GET",
-            // dataType: "jsonp"
+
             // for loop through array
         }).then(function (response) {
             var results = response.data;
             // process array
             for (var i = 0; i < results.length; i++) {
                 var still = results[i].images.fixed_height.url;
-                // console.log(results[i]);
-                // console.log("We have data");
+
                 var animalImage = $("<img>");
                 animalImage.attr("src", still);
 
                 // target gifs div to append
                 $("#gifs").append(animalImage);
 
-                // attempt to clear previous image/s displayed
+                // TODO: attempt to clear previous image/s displayed
                 // it emptied on loading?
 
             }
@@ -37,49 +35,49 @@ $(document).ready(function () {
         // target div id animalsbuttons
         // on click to build the button
         // populate to add it in with other animal buttons
-        $(document).on("click","#animalsbuttons", function () {
-            var newAnimal = $("#gif-input").val();
-            // append a new button of course
-            var newButton = $("<button/>").addClass("btn btn-info animal").attr('data-name', newAnimal).html(newAnimal).css({ 'margin': '5px' });
-            
-            
+        console.log("I am working1")
+        // $("#gifs").empty();
 
-            // How to get button to append to page
-            $("#animalsbuttons").append(newButton);
-                console.log("Work");
-                console.log(newAnimal);
-                
-                $.ajax({
-                    url: "http://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" + animal,
-                    method: "GET",
-                    // dataType: "jsonp"
-                    // for loop through array
-                }).then(function (response) {
-                    var results = response.data;
-                    // process array
-                    for (var i = 0; i < results.length; i++) {
-                        var still = results[i].images.fixed_height.url;
-                        // console.log(results[i]);
-                        // console.log("We have data");
-                        var animalImage = $("<img>");
-                        animalImage.attr("src", still);
+    });
+
+    $(document).on("click", "#submitButton", function () {
+        event.preventDefault()
+        console.log("I am working")
+
+        var newAnimal = $("#gif-input").val().trim();
+
+        console.log(newAnimal)
+        var newButton = $("<button/>").addClass("btn btn-info animal").attr('data-name', newAnimal).html(newAnimal).css({ 'margin': '5px' });
+
         
-                        // target gifs div to append
-                        $("#gifs").append(animalImage);
-        
-                        // attempt to clear previous image/s displayed
-                        // it emptied on loading?
-        
-                    }
-                    // type/images/fixedheight/url
-                    // format data
-        
-                });
+        console.log("newButton", newButton)
+
+        // append to page
+        animaldiv.append(newButton);
+        console.log(newAnimal);
+        console.log(animaldiv);
+
+        $.ajax({
+            url: "http://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" + newAnimal,
+            method: "GET",
+            // dataType: "jsonp"
+            // for loop through array
+        }).then(function (response) {
+            var results = response.data;
+            // process array
+            for (var i = 0; i < results.length; i++) {
+                var still = results[i].images.fixed_height.url;
+                var animalImage = $("<img>");
+                animalImage.attr("src", still);
+                // target gifs div to append
+                $("#gifs").append(animalImage);
+
+                // attempt to clear previous image/s displayed
+                // it emptied on loading?
+
+            }
+
         });
-        // of course it did because it was in the wrong position
-        // fixed append so that only one type of image shows
-        $("#gifs").empty();
-
     });
 });
 
