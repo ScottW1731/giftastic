@@ -1,10 +1,10 @@
 // event handler
 $(document).ready(function () {
     $(".animal").click(function () {
-        console.log("You clicked me!");
-        console.log(this);
+        // console.log("You clicked me!");
+        // console.log(this);
         let animal = $(this).data('name');
-        console.log(animal);
+        // console.log(animal);
 
         $.ajax({
             url: "http://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" + animal,
@@ -16,8 +16,8 @@ $(document).ready(function () {
             // process array
             for (var i = 0; i < results.length; i++) {
                 var still = results[i].images.fixed_height.url;
-                console.log(results[i]);
-                console.log("We have data");
+                // console.log(results[i]);
+                // console.log("We have data");
                 var animalImage = $("<img>");
                 animalImage.attr("src", still);
 
@@ -37,8 +37,14 @@ $(document).ready(function () {
         // target div id animalsbuttons
         // on click to build the button
         // populate to add it in with other animal buttons
-        $(onclick).build(function(event){
-        
+        $("button").on("click", function () {
+            var newAnimal = $("#gif-input").val();
+            // append a new button of course!
+            var newButton = $("<button/>").addClass("btn btn-info animal").attr('data-name', newAnimal).html(newAnimal).css({ 'margin': '5px' });
+
+            $(".submitbuttons").append(newButton);
+                console.log("Work");
+                console.log(newAnimal);
         })
         // of course it did because it was in the wrong position
         // fixed append so that only one tpye of image shows
