@@ -2,7 +2,7 @@
 $(document).ready(function () {
     const animaldiv = $("#animalsbuttons");
     $(".animal").click(function () {
-
+        var gifs = $("#gifs");
         let animal = $(this).data('name');
 
         $.ajax({
@@ -16,12 +16,15 @@ $(document).ready(function () {
             for (var i = 0; i < results.length; i++) {
                 var still = results[i].images.fixed_height.url;
 
+                var rating = results[i].rating;
+                var p = $("<p>").text("Rating: " + rating);
+
                 var animalImage = $("<img>");
                 animalImage.attr("src", still);
 
                 // target gifs div to append
-                $("#gifs").append(animalImage);
-
+                gifs.append(animalImage);
+                gifs.append(p);
                 // TODO: attempt to clear previous image/s displayed
                 // it emptied on loading?
 
@@ -36,20 +39,20 @@ $(document).ready(function () {
         // on click to build the button
         // populate to add it in with other animal buttons
         console.log("I am working1")
-        
+        $("#gifs").empty();
 
     });
 
     $(document).on("click", "#submitButton", function () {
         event.preventDefault()
         console.log("I am working")
-
+        let gifs = $("#gifs");
+        
         var newAnimal = $("#gif-input").val().trim();
 
         console.log(newAnimal)
         var newButton = $("<button/>").addClass("btn btn-info animal").attr('data-name', newAnimal).html(newAnimal).css({ 'margin': '5px' });
 
-        
         console.log("newButton", newButton)
 
         // append to page
@@ -63,25 +66,29 @@ $(document).ready(function () {
             // dataType: "jsonp"
             // for loop through array
         }).then(function (response) {
-            var results = response.data;
+            
             // process array
             for (var i = 0; i < results.length; i++) {
+                var results = response.data;
                 var still = results[i].images.fixed_height.url;
+
+                var rating = results[i].rating;
+                var p = $("<p>").text("Rating: " + rating);
+
                 var animalImage = $("<img>");
                 animalImage.attr("src", still);
-                // target gifs div to append
-                $("#gifs").append(animalImage);
 
+                // target gifs div to append
+                gifs.append(animalImage);
+                gifs.append(p);
                 // attempt to clear previous image/s displayed
                 // it emptied on loading?
-
             }
 
         });
-        
+        $("#gifs").empty();
     });
-    // $("#gifs").empty();
-    
+
 });
 
 // X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0    api-key
