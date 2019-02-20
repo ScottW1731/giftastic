@@ -15,12 +15,14 @@ $(document).ready(function () {
             // process array
             for (var i = 0; i < results.length; i++) {
                 var still = results[i].images.fixed_height.url;
+                var animate = results[i].images.fixed_height.url;
 
                 var rating = results[i].rating;
                 var p = $("<p>").text("Rating: " + rating);
 
                 var animalImage = $("<img>");
                 animalImage.attr("src", still);
+                animalImage.attr("src", animate);
 
                 // target gifs div to append
                 gifs.append(animalImage);
@@ -40,7 +42,6 @@ $(document).ready(function () {
         // populate to add it in with other animal buttons
         console.log("I am working1")
         $("#gifs").empty();
-
     });
 
     $(document).on("click", "#submitButton", function () {
@@ -66,17 +67,21 @@ $(document).ready(function () {
             // dataType: "jsonp"
             // for loop through array
         }).then(function (response) {
-            
+            var results = response.data;
+            console.log(response);
             // process array
             for (var i = 0; i < results.length; i++) {
                 var results = response.data;
-                var still = results[i].images.fixed_height.url;
-
+                var still = results[i].images.fixed_height_still.url;
+                var animate = results[i].images.fixed_height.url;
+                
+                
                 var rating = results[i].rating;
                 var p = $("<p>").text("Rating: " + rating);
 
                 var animalImage = $("<img>");
                 animalImage.attr("src", still);
+                animalImage.attr("src", animate);
 
                 // target gifs div to append
                 gifs.append(animalImage);
@@ -84,12 +89,19 @@ $(document).ready(function () {
                 // attempt to clear previous image/s displayed
                 // it emptied on loading?
             }
-
         });
         $("#gifs").empty();
     });
 
+    $("#gifs").on("click", function(){
+        console.log("something")
+    });
+
+
 });
+// need on click for images
+
+
 
 // X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0    api-key
 // api.giphy.com      endpoint
