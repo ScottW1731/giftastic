@@ -1,2 +1,6 @@
-how to make api call to giphy
+TODO:
+populate buttons dynamically
+
+when gif is clicked animate
+
 
