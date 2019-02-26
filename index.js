@@ -45,7 +45,7 @@ $(document).ready(function() {
 
     $.ajax({
       url:
-        "http://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" +
+        "https://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" +
         animal,
       method: "GET"
 
@@ -107,7 +107,7 @@ $(document).ready(function() {
 
     $.ajax({
       url:
-        "http://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" +
+        "https://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" +
         newAnimal,
       method: "GET"
       // dataType: "jsonp"
