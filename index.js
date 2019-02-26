@@ -1,5 +1,43 @@
 // event handler
 $(document).ready(function() {
+
+    // animals array
+    var animals = [
+        "dog",
+        "cat",
+        "rabbit",
+        "hamster",
+        "skunk",
+        "goldfish",
+        "bird",
+        "ferret",
+        "turtle",
+        "sugar glider",
+        "chinchilla",
+        "hedgehog",
+        "hermit crab",
+        "gerbil",
+        "pygmy goat",
+        "chicken",
+        "capybara",
+        "teacup pig",
+        "serval",
+        "salamander",
+        "frog"
+    ];
+
+  function CreateButtons(animalArray, newClass, addArea){
+      $(addArea).empty();
+      for(var i = 0; i < animalArray.length; i++) {
+        var newButton = $("<button>");
+        newButton.addClass(newClass);
+        newButton.attr("data-name", animalArray[i]);
+        newButton.text(animalArray[i]);
+        $(addArea).append(newButton);
+      }
+  };
+  CreateButtons(animals,"btn btn-info animal", "#animalsbuttons");
+
   const animaldiv = $("#animalsbuttons");
   $(".animal").click(function() {
     var gifs = $("#gifs");
@@ -100,9 +138,23 @@ $(document).ready(function() {
     $("#gifs").empty();
   });
 
+//   $(document).on("click", ".animal-image", function() {
+//     var state = $(this).attr("data-state");
+
+//     if (state === "still") {
+//       $(this).attr("src", $(this).attr("data-animate"));
+//       $(this).attr("data-state", "animate");
+//     } else {
+//       $(this).attr("src", $(this).attr("data-still"));
+//       $(this).attr("data-state", "still");
+//     }
+//   });
+
   $("#gifs").on("click", function() {
     console.log("something");
   });
+
+
 });
 // need on click for images
 
