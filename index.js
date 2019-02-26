@@ -44,8 +44,9 @@ $(document).ready(function() {
     let animal = $(this).data("name");
 
     $.ajax({
+      // remove https: to work on git hub, but it won't work locally without it?
       url:
-        "//api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" +
+        "https://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" +
         animal,
       method: "GET"
 
@@ -107,7 +108,7 @@ $(document).ready(function() {
 
     $.ajax({
       url:
-        "//api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" +
+        "https://api.giphy.com/v1/gifs/search?api_key=X97IrbPxwDVu8KnVEQ4ybE2JNhwOkwU0&q=" +
         newAnimal,
       method: "GET"
       // dataType: "jsonp"
